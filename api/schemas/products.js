@@ -5,7 +5,7 @@ const Products = new graphql.GraphQLObjectType({
   name : 'products',
   fields : {
     id : {
-      type : graphql.GraphQLString
+      type : graphql.GraphQLInt
     },
     name : {
       type : graphql.GraphQLString
@@ -14,8 +14,11 @@ const Products = new graphql.GraphQLObjectType({
       type : graphql.GraphQLInt
     },
     formattedPrice : {
-      type : graphql.GraphQLInt,
-      resolve : product => product.price ? `$ ${product.price}.00` : ''
+      type : graphql.GraphQLString,
+      resolve : data => {
+        console.log(data.price)
+        return data.price*1 ? `$${data.price}.00` : '';
+      }
     }
   }
 });
@@ -27,7 +30,8 @@ module.exports = {
       type : graphql.GraphQLInt
     }
   },
-  resolve : (root, args) => {
+  resolve : (root, args, req, res, next) => {
+    if (args && args.id){ return backendTest.getProducts(args.id) }
     return backendTest.getProducts();
   }
 };

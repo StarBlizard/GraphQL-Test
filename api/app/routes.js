@@ -14,5 +14,5 @@ app.get('/alive', alive);
 
 // Products
 app.get('/products/get' , productsController.get);
-app.post('/products/add', productsController.add);
+// app.post('/products/add', productsController.add);
 // app.post('/removeProduct', productsController.remove);

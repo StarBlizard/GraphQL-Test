@@ -3,19 +3,26 @@
 const path        = require('path');
 const { graphql } = require('graphql');
 const Products    = require(path.join(process.env.PWD, '/schemas/products'));
+const rootSchema  = require('../../schemas/root');
 
+/*
 module.exports.add = (req, res) => {
-  let data = req.body;
-  Products.create(data).then( () => {
-    return res.status(200).send(true);
-  });
-};
+  const graphqlQuery = req.body.query;
 
-module.exports.get = (req, res) => {
-  const graphqlQuery = req.query.graphqlQuery || "{ human(id: '1000') { name height }";
+  if (!graphqlQuery) { return res.status(500).send("You must specify your product fields"); }
 
   return graphql(rootSchema, graphqlQuery)
     .then(response => response.data)
-    .then((data) => res.json(data))
-    .catch((err) => console.error(err));
+    .then(data => res.status(200).send(data))
+    .catch((err) => { return res.status(500).send(error) });
+};
+*/
+
+module.exports.get = (req, res) => {
+  const graphqlQuery = req.query.query || "{ product { id name price } }";
+
+  return graphql(rootSchema, graphqlQuery)
+    .then(response => response.data)
+    .then(data => res.status(200).send(data))
+    .catch((err) => { return res.status(500).send(error) });
 };

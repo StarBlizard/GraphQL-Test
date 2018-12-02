@@ -50,12 +50,18 @@ module.exports = {
     });
 
     // Use GraphQL Schema
+    /*
     this.app.use('/products*', expressGraphql({
       schema : rootSchema,
       pretty : true,
-      graphiql : true
+      graphql : true
     }));
+    */
 
     return this;
+  },
+
+  stop : function(){
+    this.app.close();
   }
 };

@@ -2,7 +2,8 @@
   "scripts": {
     "test": "nodemon app.js",
     "start": "nodemon app.js",
-    "test-server": "mocha schemas/*.spec.js"
+    "test-server"     : "mocha schemas/*.unit.spec.js",
+    "test-integration": "mocha schemas/*.integration.spec.js"
   },
   "dependencies": {
     "bluebird": "^3.5.3",
