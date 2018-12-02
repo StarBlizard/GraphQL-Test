@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "test": "nodemon app.js",
+    "start": "nodemon app.js",
+    "test-server": "mocha schemas/*.spec.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2",
+    "nconf": "^0.9.1",
+    "nodemon": "^1.18.7",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "underscore": "^1.8.3",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "sinon": "^7.1.1",
+    "sinon-chai": "^3.3.0"
+  }
+}
